@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Chi tiết dự án — THUC ARCHITECTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles/main.css">
+<style>
+  .project-hero{
+    position:relative;height:64vh;min-height:380px;overflow:hidden;
+    margin-top:78px;
+  }
+  .project-hero img{
+    width:100%;height:100%;object-fit:cover;
+    transform:scale(1.08);opacity:0;
+    animation:heroIn 1s ease forwards;
+  }
+  @keyframes heroIn{
+    to{transform:scale(1);opacity:1;}
+  }
+  .project-hero::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(to top, rgba(12,12,12,1), rgba(12,12,12,.15) 55%, rgba(12,12,12,.35));
+  }
+  .project-hero-text{
+    position:absolute;left:0;right:0;bottom:0;padding:40px 6%;
+  }
+  .project-tag{color:var(--gold);font-size:.75rem;letter-spacing:.3em;text-transform:uppercase;}
+  .project-hero h1{font-size:clamp(2rem,6vw,4rem);margin-top:10px;color:var(--cream);}
+
+  .project-meta{
+    display:flex;gap:40px;flex-wrap:wrap;padding:40px 6%;border-bottom:1px solid var(--line);
+  }
+  .meta-item span{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#726c5f;margin-bottom:6px;}
+  .meta-item b{font-family:'Oswald';font-weight:500;font-size:1.1rem;color:var(--cream);}
+
+  .project-desc{max-width:720px;padding:50px 6% 0;}
+  .project-desc p{color:#b8b1a3;line-height:1.8;font-size:.95rem;}
+
+  .project-gallery{padding:50px 6% 90px;}
+  .pg-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:30px;}
+  .pg-grid img{
+    width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:2px;
+    opacity:0;transform:translateY(20px);transition:opacity .6s ease, transform .6s ease;
+  }
+  .pg-grid img.is-visible{opacity:1;transform:translateY(0);}
+
+  .back-link{
+    display:inline-flex;align-items:center;gap:8px;margin:26px 6% 0;
+    color:#a8a196;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;
+    transition:color .2s;
+  }
+  .back-link:hover{color:var(--gold-bright);}
+
+  .next-project{
+    border-top:1px solid var(--line);padding:60px 6%;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
+  }
+  .next-project a{font-family:'Bebas Neue';font-size:2rem;color:var(--cream);transition:color .25s;}
+  .next-project a:hover{color:var(--gold-bright);}
+  .next-project .np-label{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#726c5f;}
+
+  @media (max-width:700px){
+    .pg-grid{grid-template-columns:1fr;}
+    .project-hero{height:52vh;}
+  }
+</style>
+</head>
+<body data-page="projects">
+
+<header id="siteHeader">
+  <a href="../../index.html" class="brand">THUC <span>ARCHITECTS</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Mở menu"><span></span><span></span><span></span></button>
+  <nav id="mainNav">
+    <ul>
+      <li><a href="../../index.html" data-page="home">Trang chủ</a></li>
+      <li><a href="about.html" data-page="about">Về chúng tôi</a></li>
+      <li><a href="projects.html" data-page="projects">Dự án</a></li>
+      <li><a href="contact.html" data-page="contact">Liên hệ</a></li>
+      <li><a href="terms.html" data-page="terms">Điều khoản</a></li>
+    </ul>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+</header>
+
+<a href="projects.html" class="back-link">← Tất cả dự án</a>
+
+<main style="padding-top:0;">
+  <div class="project-hero" id="projectHero">
+    <img id="heroImg" src="" alt="">
+    <div class="project-hero-text">
+      <span class="project-tag" id="projectTag">Công trình</span>
+      <h1 id="projectTitle">Tên dự án</h1>
+    </div>
+  </div>
+
+  <div class="project-meta">
+    <div class="meta-item"><span>Loại công trình</span><b id="metaType">—</b></div>
+    <div class="meta-item"><span>Địa điểm</span><b id="metaLocation">—</b></div>
+    <div class="meta-item"><span>Năm hoàn thành</span><b id="metaYear">—</b></div>
+  </div>
+
+  <div class="project-desc">
+    <p id="projectDesc">Đang tải mô tả dự án...</p>
+  </div>
+
+  <div class="project-gallery">
+    <span class="eyebrow">Hình ảnh</span>
+    <h2 class="section-title">Chi tiết công trình</h2>
+    <div class="pg-grid" id="pgGrid"></div>
+  </div>
+
+  <div class="next-project">
+    <div>
+      <div class="np-label">Xem thêm</div>
+      <a href="projects.html">Toàn bộ dự án →</a>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2026 Thuc Architects. Bảo lưu mọi quyền.</p>
+  <div class="foot-social">
+    <a href="terms.html">Điều khoản</a>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+</footer>
+
+<script src="../scripts/main.js"></script>
+<script>
+  // Dữ liệu dự án mẫu — khớp với id dùng trong projects.html
+  const PROJECTS = {
+    "onyx-house": {
+      tag: "Nhà phố", title: "The Onyx House",
+      type: "Nhà phố", location: "Quận 2, TP.HCM", year: "2024",
+      desc: "Công trình nhà phố với mặt tiền tối giản, tông đen chủ đạo kết hợp điểm nhấn gỗ tự nhiên. Không gian mở tối đa ánh sáng và thông gió tự nhiên.",
+      hero: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1600&auto=format&fit=crop",
+      gallery: [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1000&auto=format&fit=crop"
+      ]
+    },
+    "green-terrace-villa": {
+      tag: "Biệt thự", title: "Green Terrace Villa",
+      type: "Biệt thự", location: "Thảo Điền, TP.HCM", year: "2023",
+      desc: "Biệt thự sân vườn với hệ mái đua rộng, tận dụng cây xanh bao quanh tạo vi khí hậu mát mẻ quanh năm.",
+      hero: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1600&auto=format&fit=crop",
+      gallery: [
+        "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop"
+      ]
+    },
+    "amber-living-room": {
+      tag: "Nội thất", title: "Amber Living Room",
+      type: "Nội thất", location: "Quận 7, TP.HCM", year: "2024",
+      desc: "Không gian phòng khách ấm áp với tông gỗ hổ phách, ánh sáng vàng dịu và bố cục nội thất tối giản.",
+      hero: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1600&auto=format&fit=crop",
+      gallery: [
+        "https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop"
+      ]
+    },
+    "charcoal-facade": {
+      tag: "Nhà phố", title: "Charcoal Facade",
+      type: "Nhà phố", location: "Bình Thạnh, TP.HCM", year: "2022",
+      desc: "Mặt tiền tối giản với vật liệu bê tông mài và lam gỗ, tạo chiều sâu thị giác cho công trình phố hẹp.",
+      hero: "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1600&auto=format&fit=crop",
+      gallery: [
+        "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop"
+      ]
+    },
+    "golden-ridge-villa": {
+      tag: "Biệt thự", title: "Golden Ridge Villa",
+      type: "Biệt thự", location: "Đà Lạt", year: "2023",
+      desc: "Biệt thự nghỉ dưỡng trên đồi, tận dụng địa hình dốc tự nhiên và tầm nhìn toàn cảnh thung lũng.",
+      hero: "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1600&auto=format&fit=crop",
+      gallery: [
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1000&auto=format&fit=crop"
+      ]
+    },
+    "warm-oak-kitchen": {
+      tag: "Nội thất", title: "Warm Oak Kitchen",
+      type: "Nội thất", location: "Quận 3, TP.HCM", year: "2024",
+      desc: "Phòng bếp mở với hệ tủ gỗ sồi tự nhiên, mặt bàn đá liền khối và ánh sáng tự nhiên từ giếng trời.",
+      hero: "https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1600&auto=format&fit=crop",
+      gallery: [
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1000&auto=format&fit=crop",
+        "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop"
+      ]
+    }
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const id = params.get('id') || 'onyx-house';
+  const data = PROJECTS[id] || PROJECTS['onyx-house'];
+
+  document.getElementById('heroImg').src = data.hero;
+  document.getElementById('heroImg').alt = data.title;
+  document.getElementById('projectTag').textContent = data.tag;
+  document.getElementById('projectTitle').textContent = data.title;
+  document.getElementById('metaType').textContent = data.type;
+  document.getElementById('metaLocation').textContent = data.location;
+  document.getElementById('metaYear').textContent = data.year;
+  document.getElementById('projectDesc').textContent = data.desc;
+  document.title = data.title + " — THUC ARCHITECTS";
+
+  const grid = document.getElementById('pgGrid');
+  data.gallery.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = data.title;
+    img.loading = "lazy";
+    grid.appendChild(img);
+  });
+
+  // Reveal ảnh khi cuộn tới
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  grid.querySelectorAll('img').forEach(img => io.observe(img));
+</script>
+</body>
+</html>
