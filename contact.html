@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liên hệ — THUC ARCHITECTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:10px;}
+  .contact-info p{color:#a8a196;line-height:1.6;margin-bottom:26px;font-size:.95rem;}
+  .contact-detail{margin-bottom:20px;}
+  .contact-detail span{display:block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#726c5f;margin-bottom:4px;}
+  .contact-detail a,.contact-detail div{font-size:1.02rem;color:var(--cream);}
+  form{display:flex;flex-direction:column;gap:18px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:#a8a196;}
+  .field input,.field textarea{
+    background:transparent;border:none;border-bottom:1px solid var(--line);
+    padding:10px 2px;color:var(--cream);font-family:'Oswald';font-size:1rem;
+    outline:none;transition:border-color .2s;resize:vertical;
+  }
+  .field input:focus,.field textarea:focus{border-color:var(--gold);}
+  .submit-btn{
+    margin-top:10px;align-self:flex-start;
+    background:var(--gold);color:var(--black);border:none;
+    padding:15px 36px;font-family:'Oswald';font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    font-size:.82rem;cursor:pointer;transition:background .2s,opacity .2s;
+  }
+  .submit-btn:hover{background:var(--gold-bright);}
+  .submit-btn:disabled{opacity:.5;cursor:not-allowed;}
+  .form-msg{font-size:.85rem;margin-top:4px;min-height:20px;}
+  .form-msg.success{color:#8fd19e;}
+  .form-msg.error{color:#e08a7d;}
+  @media (max-width:900px){.contact-wrap{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-page="contact">
+
+<header id="siteHeader">
+  <a href="index.html" class="brand">THUC <span>ARCHITECTS</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Mở menu">☰</button>
+  <nav id="mainNav">
+    <ul>
+      <li><a href="index.html" data-page="home">Trang chủ</a></li>
+      <li><a href="about.html" data-page="about">Về chúng tôi</a></li>
+      <li><a href="projects.html" data-page="projects">Dự án</a></li>
+      <li><a href="contact.html" data-page="contact">Liên hệ</a></li>
+      <li><a href="terms.html" data-page="terms">Điều khoản</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="page-head">
+    <span class="eyebrow">Liên hệ</span>
+    <h1 class="section-title">Bắt đầu dự án của bạn</h1>
+    <p class="section-lede">Để lại thông tin, đội ngũ sẽ liên hệ tư vấn trong vòng 24 giờ.</p>
+  </div>
+
+  <section style="padding-top:50px;">
+    <div class="contact-wrap">
+      <div class="contact-info">
+        <p>Gửi thông tin dự án hoặc số điện thoại, chúng tôi sẽ chủ động liên hệ lại.</p>
+        <div class="contact-detail"><span>Điện thoại</span><a href="tel:0900000000">090 000 0000</a></div>
+        <div class="contact-detail"><span>Email</span><a href="mailto:hello@thucarchitects.vn">hello@thucarchitects.vn</a></div>
+        <div class="contact-detail"><span>Địa chỉ</span><div>123 Đường Kiến Trúc, Q.1, TP.HCM</div></div>
+      </div>
+
+      <form id="contactForm">
+        <div class="field">
+          <label for="name">Họ tên</label>
+          <input id="name" name="name" type="text" required>
+        </div>
+        <div class="field">
+          <label for="phone">Số điện thoại</label>
+          <input id="phone" name="phone" type="tel" required pattern="[0-9+\s]{8,15}" placeholder="09xxxxxxxx">
+        </div>
+        <div class="field">
+          <label for="msg">Mô tả dự án (không bắt buộc)</label>
+          <textarea id="msg" name="message" rows="4"></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submitBtn">Gửi yêu cầu</button>
+        <p class="form-msg" id="formMsg"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Thuc Architects. Bảo lưu mọi quyền.</p>
+  <div class="foot-social">
+    <a href="terms.html">Điều khoản</a>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+
+<!-- Supabase client -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script>
+  // ============================================================
+  // ĐIỀN 2 GIÁ TRỊ NÀY TỪ SUPABASE: Settings → API
+  // ============================================================
+  const SUPABASE_URL = "https://ikiukckoyjophzgettzd.supabase.co";      // vd: https://abcxyz.supabase.co
+  const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlraXVrY2tveWpvcGh6Z2V0dHpkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQzNTY1ODgsImV4cCI6MjA5OTkzMjU4OH0.0OdYRlVoOjk8W-TspE_8p6kQ0K9n33GdlXkukpABgyo";    // anon public key
+  // ============================================================
+
+  const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const formMsg = document.getElementById('formMsg');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    formMsg.textContent = '';
+    formMsg.className = 'form-msg';
+
+    const name = document.getElementById('name').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const message = document.getElementById('msg').value.trim();
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Đang gửi...';
+
+    try {
+      const { error } = await supabaseClient
+        .from('contacts')
+        .insert([{ name, phone, message }]);
+
+      if (error) throw error;
+
+      formMsg.textContent = 'Đã gửi thành công! Chúng tôi sẽ liên hệ sớm nhất.';
+      formMsg.classList.add('success');
+      form.reset();
+    } catch (err) {
+      console.error(err);
+      formMsg.textContent = 'Có lỗi xảy ra, vui lòng thử lại hoặc gọi trực tiếp hotline.';
+      formMsg.classList.add('error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Gửi yêu cầu';
+    }
+  });
+</script>
+</body>
+</html>

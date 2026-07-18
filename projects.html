@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dự án — THUC ARCHITECTS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+  .filter-row{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap;}
+  .filter-btn{
+    padding:9px 20px;border:1px solid var(--line);background:transparent;color:#b8b1a3;
+    font-family:'Oswald';font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;
+  }
+  .filter-btn.active,.filter-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+  .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;}
+  .gallery-item{position:relative;overflow:hidden;aspect-ratio:4/5;cursor:pointer;}
+  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease;}
+  .gallery-item:hover img{transform:scale(1.06);}
+  .gallery-caption{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(to top, rgba(0,0,0,.9), transparent);}
+  .gallery-caption .g-tag{color:var(--gold);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;}
+  .gallery-caption h4{font-family:'Oswald';font-weight:500;font-size:1rem;color:var(--cream);margin-top:3px;}
+  @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:520px){.gallery-grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body data-page="projects">
+
+<header id="siteHeader">
+  <a href="index.html" class="brand">THUC <span>ARCHITECTS</span></a>
+  <button class="nav-toggle" id="navToggle" aria-label="Mở menu">☰</button>
+  <nav id="mainNav">
+    <ul>
+      <li><a href="index.html" data-page="home">Trang chủ</a></li>
+      <li><a href="about.html" data-page="about">Về chúng tôi</a></li>
+      <li><a href="projects.html" data-page="projects">Dự án</a></li>
+      <li><a href="contact.html" data-page="contact">Liên hệ</a></li>
+      <li><a href="terms.html" data-page="terms">Điều khoản</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <div class="page-head">
+    <span class="eyebrow">Dự án</span>
+    <h1 class="section-title">Công trình đã thực hiện</h1>
+    <p class="section-lede">Tuyển chọn các công trình tiêu biểu đã thiết kế và thi công.</p>
+    <div class="filter-row">
+      <button class="filter-btn active" data-filter="all">Tất cả</button>
+      <button class="filter-btn" data-filter="house">Nhà phố</button>
+      <button class="filter-btn" data-filter="villa">Biệt thự</button>
+      <button class="filter-btn" data-filter="interior">Nội thất</button>
+    </div>
+  </div>
+
+  <section style="padding-top:0;">
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item" data-cat="house">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop" alt="Nhà phố hiện đại">
+        <div class="gallery-caption"><span class="g-tag">Nhà phố</span><h4>The Onyx House</h4></div>
+      </div>
+      <div class="gallery-item" data-cat="villa">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop" alt="Biệt thự sân vườn">
+        <div class="gallery-caption"><span class="g-tag">Biệt thự</span><h4>Green Terrace Villa</h4></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop" alt="Nội thất phòng khách">
+        <div class="gallery-caption"><span class="g-tag">Nội thất</span><h4>Amber Living Room</h4></div>
+      </div>
+      <div class="gallery-item" data-cat="house">
+        <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1000&auto=format&fit=crop" alt="Nhà phố tối giản">
+        <div class="gallery-caption"><span class="g-tag">Nhà phố</span><h4>Charcoal Facade</h4></div>
+      </div>
+      <div class="gallery-item" data-cat="villa">
+        <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1000&auto=format&fit=crop" alt="Biệt thự hiện đại">
+        <div class="gallery-caption"><span class="g-tag">Biệt thự</span><h4>Golden Ridge Villa</h4></div>
+      </div>
+      <div class="gallery-item" data-cat="interior">
+        <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1000&auto=format&fit=crop" alt="Phòng bếp hiện đại">
+        <div class="gallery-caption"><span class="g-tag">Nội thất</span><h4>Warm Oak Kitchen</h4></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 Thuc Architects. Bảo lưu mọi quyền.</p>
+  <div class="foot-social">
+    <a href="terms.html">Điều khoản</a>
+    <a href="#">Instagram</a>
+    <a href="#">Facebook</a>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+<script>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.gallery-item');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      items.forEach(it => {
+        it.style.display = (f === 'all' || it.dataset.cat === f) ? '' : 'none';
+      });
+    });
+  });
+</script>
+</body>
+</html>
