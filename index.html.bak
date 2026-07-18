@@ -42,79 +42,9 @@
     .teaser-grid{grid-template-columns:1fr;}
     .stat{flex:1 1 45%;}
   }
-
-  /* ---- INTRO SCREEN ---- */
-  .intro{
-    position:fixed;inset:0;z-index:1000;
-    display:flex;align-items:center;justify-content:center;
-    background:var(--black);
-    overflow:hidden;
-  }
-  .intro-img{
-    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
-    transform:scale(1.25) rotate(-3deg);
-    opacity:0;
-    animation:introImgIn 1.4s cubic-bezier(.16,1,.3,1) forwards;
-  }
-  @keyframes introImgIn{
-    0%{opacity:0;transform:scale(1.25) rotate(-3deg);}
-    100%{opacity:1;transform:scale(1.05) rotate(0deg);}
-  }
-  .intro::after{
-    content:"";position:absolute;inset:0;
-    background:linear-gradient(to top, rgba(12,12,12,.95), rgba(12,12,12,.35) 55%, rgba(12,12,12,.6));
-  }
-  .intro-content{
-    position:relative;z-index:2;text-align:center;
-    opacity:0;transform:translateY(16px);
-    animation:introContentIn 1s ease forwards;
-    animation-delay:.5s;
-  }
-  @keyframes introContentIn{
-    to{opacity:1;transform:translateY(0);}
-  }
-  .intro-eyebrow{color:var(--gold);font-size:.75rem;letter-spacing:.35em;text-transform:uppercase;margin-bottom:14px;}
-  .intro-title{font-family:'Bebas Neue';font-size:clamp(2.4rem,8vw,4.5rem);color:var(--cream);letter-spacing:.04em;line-height:1;}
-  .intro-title span{color:var(--gold);}
-  .intro-start{
-    margin-top:34px;
-    display:inline-flex;align-items:center;gap:12px;
-    background:transparent;border:1px solid var(--gold);color:var(--cream);
-    padding:15px 34px;font-family:'Oswald';font-weight:500;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;
-    cursor:pointer;transition:background .25s ease, color .25s ease, letter-spacing .25s ease;
-  }
-  .intro-start:hover{background:var(--gold);color:var(--black);letter-spacing:.18em;}
-  .intro-start svg{transition:transform .25s ease;}
-  .intro-start:hover svg{transform:translateX(4px);}
-
-  .intro.fade-out{
-    animation:introFadeOut .7s ease forwards;
-    pointer-events:none;
-  }
-  @keyframes introFadeOut{
-    to{opacity:0;visibility:hidden;}
-  }
-  body.intro-locked{overflow:hidden;height:100vh;}
-
-  @media (prefers-reduced-motion: reduce){
-    .intro-img{animation:none;opacity:1;transform:scale(1.05);}
-    .intro-content{animation:none;opacity:1;transform:none;}
-  }
 </style>
 </head>
 <body data-page="home">
-
-<div class="intro" id="introScreen">
-  <img class="intro-img" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1800&auto=format&fit=crop" alt="Công trình kiến trúc">
-  <div class="intro-content">
-    <span class="intro-eyebrow">Thuc Architects</span>
-    <h1 class="intro-title">KIẾN TẠO<br>KHÔNG GIAN <span>SỐNG</span></h1>
-    <button class="intro-start" id="introStart">
-      Start Building
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
-  </div>
-</div>
 
 <header id="siteHeader">
   <a href="index.html" class="brand">THUC <span>ARCHITECTS</span></a>
@@ -185,26 +115,6 @@
   </div>
 </footer>
 
-<script>
-  (function() {
-    const intro = document.getElementById('introScreen');
-    const startBtn = document.getElementById('introStart');
-    const SEEN_KEY = 'thuc_intro_seen';
-
-    // Đã xem trong phiên này rồi -> ẩn luôn, khỏi animate lại
-    if (sessionStorage.getItem(SEEN_KEY)) {
-      intro.style.display = 'none';
-    } else {
-      document.body.classList.add('intro-locked');
-      startBtn.addEventListener('click', () => {
-        intro.classList.add('fade-out');
-        document.body.classList.remove('intro-locked');
-        sessionStorage.setItem(SEEN_KEY, '1');
-        setTimeout(() => { intro.style.display = 'none'; }, 700);
-      });
-    }
-  })();
-</script>
 <script src="src/scripts/main.js"></script>
 </body>
 </html>
