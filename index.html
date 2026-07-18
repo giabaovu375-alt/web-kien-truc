@@ -6,7 +6,7 @@
 <title>THUC ARCHITECTS — Kiến trúc & Xây dựng</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css">
+<link rel="stylesheet" href="src/styles/main.css">
 <style>
   .hero{
     position:relative;min-height:100svh;
@@ -48,16 +48,17 @@
 
 <header id="siteHeader">
   <a href="index.html" class="brand">THUC <span>ARCHITECTS</span></a>
-  <button class="nav-toggle" id="navToggle" aria-label="Mở menu">☰</button>
+  <button class="nav-toggle" id="navToggle" aria-label="Mở menu"><span></span><span></span><span></span></button>
   <nav id="mainNav">
     <ul>
       <li><a href="index.html" data-page="home">Trang chủ</a></li>
-      <li><a href="about.html" data-page="about">Về chúng tôi</a></li>
-      <li><a href="projects.html" data-page="projects">Dự án</a></li>
-      <li><a href="contact.html" data-page="contact">Liên hệ</a></li>
-      <li><a href="terms.html" data-page="terms">Điều khoản</a></li>
+      <li><a href="src/pages/about.html" data-page="about">Về chúng tôi</a></li>
+      <li><a href="src/pages/projects.html" data-page="projects">Dự án</a></li>
+      <li><a href="src/pages/contact.html" data-page="contact">Liên hệ</a></li>
+      <li><a href="src/pages/terms.html" data-page="terms">Điều khoản</a></li>
     </ul>
   </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
 <main>
@@ -71,8 +72,8 @@
       <div class="stat"><b>100%</b><span>Bàn giao đúng tiến độ</span></div>
     </div>
     <div class="cta-row">
-      <a href="projects.html" class="btn btn-primary">Xem dự án</a>
-      <a href="contact.html" class="btn btn-outline">Liên hệ tư vấn</a>
+      <a href="src/pages/projects.html" class="btn btn-primary">Xem dự án</a>
+      <a href="src/pages/contact.html" class="btn btn-outline">Liên hệ tư vấn</a>
     </div>
   </section>
 
@@ -85,21 +86,21 @@
           <h3>Về chúng tôi</h3>
           <p>Giá trị cốt lõi và cách chúng tôi làm việc với khách hàng.</p>
         </div>
-        <a href="about.html">Tìm hiểu thêm →</a>
+        <a href="src/pages/about.html">Tìm hiểu thêm →</a>
       </div>
       <div class="teaser-card">
         <div>
           <h3>Dự án</h3>
           <p>Các công trình nhà phố, biệt thự và nội thất đã thực hiện.</p>
         </div>
-        <a href="projects.html">Xem gallery →</a>
+        <a href="src/pages/projects.html">Xem gallery →</a>
       </div>
       <div class="teaser-card">
         <div>
           <h3>Liên hệ</h3>
           <p>Để lại số điện thoại, đội ngũ sẽ liên hệ tư vấn miễn phí.</p>
         </div>
-        <a href="contact.html">Gửi yêu cầu →</a>
+        <a href="src/pages/contact.html">Gửi yêu cầu →</a>
       </div>
     </div>
   </section>
@@ -108,12 +109,12 @@
 <footer>
   <p>© 2026 Thuc Architects. Bảo lưu mọi quyền.</p>
   <div class="foot-social">
-    <a href="terms.html">Điều khoản</a>
+    <a href="src/pages/terms.html">Điều khoản</a>
     <a href="#">Instagram</a>
     <a href="#">Facebook</a>
   </div>
 </footer>
 
-<script src="assets/main.js"></script>
+<script src="src/scripts/main.js"></script>
 </body>
 </html>
