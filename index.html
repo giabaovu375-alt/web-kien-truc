@@ -33,6 +33,9 @@
 
   .teaser-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:50px;}
   .teaser-card{background:var(--charcoal);padding:34px 26px;min-height:200px;display:flex;flex-direction:column;justify-content:space-between;transition:background .25s;}
+  .teaser-card.reveal:nth-child(1){transition-delay:0s;}
+  .teaser-card.reveal:nth-child(2){transition-delay:.12s;}
+  .teaser-card.reveal:nth-child(3){transition-delay:.24s;}
   .teaser-card:hover{background:#1c1a16;}
   .teaser-card h3{font-size:1.2rem;color:var(--cream);margin:14px 0 8px;}
   .teaser-card p{color:#948d80;font-size:.85rem;line-height:1.6;}
@@ -137,9 +140,9 @@
     <h1>KIẾN TẠO<br>KHÔNG GIAN <span class="accent">SỐNG</span></h1>
     <p class="hero-sub">Chúng tôi biến bản vẽ thành công trình — từ thiết kế kiến trúc đến hoàn thiện nội thất, mọi chi tiết đều được kiểm soát chặt chẽ.</p>
     <div class="hero-stats">
-      <div class="stat"><b>50+</b><span>Công trình đã thi công</span></div>
-      <div class="stat"><b>08</b><span>Năm kinh nghiệm</span></div>
-      <div class="stat"><b>100%</b><span>Bàn giao đúng tiến độ</span></div>
+      <div class="stat"><b data-counter="50" data-suffix="+">0</b><span>Công trình đã thi công</span></div>
+      <div class="stat"><b data-counter="8">0</b><span>Năm kinh nghiệm</span></div>
+      <div class="stat"><b data-counter="100" data-suffix="%">0</b><span>Bàn giao đúng tiến độ</span></div>
     </div>
     <div class="cta-row">
       <a href="src/pages/projects.html" class="btn btn-primary">Xem dự án</a>
@@ -151,21 +154,21 @@
     <span class="eyebrow">Khám phá</span>
     <h2 class="section-title">Bắt đầu từ đâu?</h2>
     <div class="teaser-grid">
-      <div class="teaser-card">
+      <div class="teaser-card reveal">
         <div>
           <h3>Về chúng tôi</h3>
           <p>Giá trị cốt lõi và cách chúng tôi làm việc với khách hàng.</p>
         </div>
         <a href="src/pages/about.html">Tìm hiểu thêm →</a>
       </div>
-      <div class="teaser-card">
+      <div class="teaser-card reveal">
         <div>
           <h3>Dự án</h3>
           <p>Các công trình nhà phố, biệt thự và nội thất đã thực hiện.</p>
         </div>
         <a href="src/pages/projects.html">Xem gallery →</a>
       </div>
-      <div class="teaser-card">
+      <div class="teaser-card reveal">
         <div>
           <h3>Liên hệ</h3>
           <p>Để lại số điện thoại, đội ngũ sẽ liên hệ tư vấn miễn phí.</p>
