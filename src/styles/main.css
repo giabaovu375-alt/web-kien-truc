@@ -145,6 +145,73 @@ img.img-loaded{
 /* ---- COUNTER ---- */
 [data-counter]{font-variant-numeric:tabular-nums;}
 
+/* ---- GALLERY ITEM (dùng chung: trang chủ, projects, lightbox) ---- */
+.gallery-item{position:relative;overflow:hidden;aspect-ratio:4/5;cursor:pointer;display:block;}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease, filter .5s ease;}
+.gallery-item:hover img{transform:scale(1.06);filter:brightness(0.85);}
+.gallery-caption{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(to top, rgba(0,0,0,.9), transparent);}
+.gallery-caption .g-tag{color:var(--gold);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;}
+.gallery-caption h4{font-family:'Oswald';font-weight:500;font-size:1rem;color:var(--cream);margin-top:3px;}
+
+/* ---- LIGHTBOX (phóng to ảnh công trình) ---- */
+.lightbox{
+  position:fixed;inset:0;z-index:500;
+  background:rgba(8,8,8,.96);
+  display:none;align-items:center;justify-content:center;
+  padding:60px 20px;
+}
+.lightbox.open{display:flex;animation:lightboxIn .25s ease forwards;}
+@keyframes lightboxIn{from{opacity:0;}to{opacity:1;}}
+.lightbox img{
+  max-width:min(1100px,92vw);max-height:82vh;object-fit:contain;
+  border:1px solid var(--line);
+}
+.lightbox-caption{
+  position:absolute;left:0;right:0;bottom:22px;text-align:center;
+  color:#a8a196;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.lightbox-caption span{color:var(--gold);}
+.lightbox-close,.lightbox-nav{
+  position:absolute;background:transparent;border:1px solid var(--line);color:var(--cream);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s;
+}
+.lightbox-close{top:22px;right:22px;width:44px;height:44px;font-size:1.3rem;}
+.lightbox-close:hover,.lightbox-nav:hover{border-color:var(--gold);color:var(--gold-bright);}
+.lightbox-nav{top:50%;transform:translateY(-50%);width:48px;height:48px;font-size:1.4rem;}
+.lightbox-prev{left:16px;}
+.lightbox-next{right:16px;}
+.lightbox-counter{
+  position:absolute;top:26px;left:26px;font-size:.75rem;letter-spacing:.1em;color:#726c5f;
+}
+@media (max-width:640px){
+  .lightbox-nav{width:38px;height:38px;font-size:1.1rem;}
+  .lightbox-close{width:38px;height:38px;top:14px;right:14px;}
+  .lightbox-counter{top:16px;left:16px;}
+}
+
+/* ---- QUICK CONTACT (nút nổi Instagram/Zalo) ---- */
+.quick-contact{
+  position:fixed;right:22px;bottom:22px;z-index:300;
+  display:flex;flex-direction:column;gap:12px;align-items:flex-end;
+}
+.qc-btn{
+  width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--charcoal);border:1px solid var(--line);color:var(--cream);
+  transition:transform .2s ease, border-color .2s, background .2s, color .2s;
+  box-shadow:0 4px 18px rgba(0,0,0,.4);
+}
+.qc-btn:hover{transform:translateY(-3px);border-color:var(--gold);color:var(--gold-bright);}
+.qc-btn.qc-primary{background:var(--gold);color:var(--black);border-color:var(--gold);}
+.qc-btn.qc-primary:hover{background:var(--gold-bright);color:var(--black);}
+.qc-btn svg{width:24px;height:24px;}
+@media (max-width:640px){
+  .quick-contact{right:14px;bottom:14px;gap:10px;}
+  .qc-btn{width:46px;height:46px;}
+  .qc-btn svg{width:20px;height:20px;}
+}
+
 @media (prefers-reduced-motion: reduce){
   *{transition:none !important;animation:none !important;}
   .reveal{opacity:1;transform:none;}

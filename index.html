@@ -46,6 +46,21 @@
     .stat{flex:1 1 45%;}
   }
 
+  /* ---- FEATURED PROJECTS ---- */
+  .featured-head{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:16px;}
+  .featured-head .view-all{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid var(--gold);padding-bottom:2px;transition:color .2s,border-color .2s;}
+  .featured-head .view-all:hover{color:var(--gold-bright);border-color:var(--gold-bright);}
+  .featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;}
+  .featured-grid .gallery-item:first-child{grid-column:span 2;grid-row:span 2;}
+  @media (max-width:900px){
+    .featured-grid{grid-template-columns:repeat(2,1fr);}
+    .featured-grid .gallery-item:first-child{grid-column:span 2;}
+  }
+  @media (max-width:560px){
+    .featured-grid{grid-template-columns:1fr;}
+    .featured-grid .gallery-item:first-child{grid-column:span 1;}
+  }
+
   /* ---- INTRO SCREEN ---- */
   .intro{
     position:fixed;inset:0;z-index:1000;
@@ -147,6 +162,30 @@
     <div class="cta-row">
       <a href="src/pages/projects.html" class="btn btn-primary">Xem dự án</a>
       <a href="src/pages/contact.html" class="btn btn-outline">Liên hệ tư vấn</a>
+    </div>
+  </section>
+
+  <section>
+    <div class="featured-head">
+      <div>
+        <span class="eyebrow">Nổi bật</span>
+        <h2 class="section-title">Công trình tiêu biểu</h2>
+      </div>
+      <a href="src/page/projects.html" class="view-all">Xem tất cả dự án →</a>
+    </div>
+    <div class="featured-grid" id="featuredGrid">
+      <a class="gallery-item reveal" data-cat="house" href="src/page/project-detail.html?id=onyx-house">
+        <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200&auto=format&fit=crop" alt="Nhà phố hiện đại">
+        <div class="gallery-caption"><span class="g-tag">Nhà phố</span><h4>The Onyx House</h4></div>
+      </a>
+      <a class="gallery-item reveal" data-cat="villa" href="src/page/project-detail.html?id=green-terrace-villa">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop" alt="Biệt thự sân vườn">
+        <div class="gallery-caption"><span class="g-tag">Biệt thự</span><h4>Green Terrace Villa</h4></div>
+      </a>
+      <a class="gallery-item reveal" data-cat="interior" href="src/page/project-detail.html?id=amber-living-room">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop" alt="Nội thất phòng khách">
+        <div class="gallery-caption"><span class="g-tag">Nội thất</span><h4>Amber Living Room</h4></div>
+      </a>
     </div>
   </section>
 

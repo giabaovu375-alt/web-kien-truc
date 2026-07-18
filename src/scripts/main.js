@@ -1,4 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ---- Nút liên hệ nhanh: trỏ tới form liên hệ (tự tính đường dẫn theo vị trí trang) ----
+  // Khi có số điện thoại / Instagram thật, thay 2 dòng href bên dưới là xong,
+  // không cần sửa gì khác (nút này tự chèn trên MỌI trang).
+  (function initQuickContact() {
+    const inSubfolder = location.pathname.includes('/src/page/');
+    const contactHref = inSubfolder ? 'contact.html' : 'src/page/contact.html';
+
+    // TODO: điền số điện thoại thật của bạn vào đây khi có
+    const PHONE_HREF = ''; // vd: 'tel:0912345678'
+    // TODO: điền link Instagram/Zalo thật khi có (để trống thì nút này sẽ ẩn)
+    const SOCIAL_HREF = ''; // vd: 'https://instagram.com/ten_that'
+
+    const wrap = document.createElement('div');
+    wrap.className = 'quick-contact';
+
+    let html = '';
+    if (SOCIAL_HREF) {
+      html += `
+      <a class="qc-btn" href="${SOCIAL_HREF}" target="_blank" rel="noopener" aria-label="Nhắn Instagram">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>`;
+    }
+    if (PHONE_HREF) {
+      html += `
+      <a class="qc-btn" href="${PHONE_HREF}" aria-label="Gọi điện thoại">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      </a>`;
+    }
+    // Luôn có nút "Liên hệ" trỏ tới form trong site — đây là kênh chắc chắn hoạt động
+    html += `
+      <a class="qc-btn qc-primary" href="${contactHref}" aria-label="Gửi yêu cầu tư vấn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v12H7l-3 3V4z"/></svg>
+      </a>`;
+
+    wrap.innerHTML = html;
+    document.body.appendChild(wrap);
+  })();
+
   const navToggle = document.getElementById('navToggle');
   const mainNav = document.getElementById('mainNav');
   const overlay = document.getElementById('navOverlay');

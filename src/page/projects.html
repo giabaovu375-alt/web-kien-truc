@@ -15,14 +15,16 @@
   }
   .filter-btn.active,.filter-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
   .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:34px;}
-  .gallery-item{position:relative;overflow:hidden;aspect-ratio:4/5;cursor:pointer;display:block;}
-  .gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease, filter .5s ease;}
-  .gallery-item:hover img{transform:scale(1.06);filter:brightness(0.85);}
-  .gallery-caption{position:absolute;left:0;right:0;bottom:0;padding:18px;background:linear-gradient(to top, rgba(0,0,0,.9), transparent);}
-  .gallery-caption .g-tag{color:var(--gold);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;}
-  .gallery-caption h4{font-family:'Oswald';font-weight:500;font-size:1rem;color:var(--cream);margin-top:3px;}
   @media (max-width:900px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
   @media (max-width:520px){.gallery-grid{grid-template-columns:1fr;}}
+
+  .gallery-caption{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;}
+  .gallery-caption .g-detail{
+    font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);
+    border:1px solid rgba(239,233,221,.4);padding:6px 12px;border-radius:20px;
+    white-space:nowrap;transition:border-color .2s,color .2s;flex-shrink:0;
+  }
+  .gallery-caption .g-detail:hover{border-color:var(--gold);color:var(--gold-bright);}
 </style>
 </head>
 <body data-page="projects">
@@ -57,30 +59,46 @@
 
   <section style="padding-top:0;">
     <div class="gallery-grid" id="galleryGrid">
-      <a class="gallery-item reveal" data-cat="house" href="project-detail.html?id=onyx-house">
+      <div class="gallery-item reveal" data-cat="house" data-id="onyx-house">
         <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1000&auto=format&fit=crop" alt="Nhà phố hiện đại">
         <div class="gallery-caption"><span class="g-tag">Nhà phố</span><h4>The Onyx House</h4></div>
-      </a>
-      <a class="gallery-item reveal" data-cat="villa" href="project-detail.html?id=green-terrace-villa">
+        <a class="g-detail" href="project-detail.html?id=onyx-house">Chi tiết →</a>
+      </div>
+      <div class="gallery-item reveal" data-cat="villa" data-id="green-terrace-villa">
         <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?q=80&w=1000&auto=format&fit=crop" alt="Biệt thự sân vườn">
         <div class="gallery-caption"><span class="g-tag">Biệt thự</span><h4>Green Terrace Villa</h4></div>
-      </a>
-      <a class="gallery-item reveal" data-cat="interior" href="project-detail.html?id=amber-living-room">
+        <a class="g-detail" href="project-detail.html?id=green-terrace-villa">Chi tiết →</a>
+      </div>
+      <div class="gallery-item reveal" data-cat="interior" data-id="amber-living-room">
         <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1000&auto=format&fit=crop" alt="Nội thất phòng khách">
         <div class="gallery-caption"><span class="g-tag">Nội thất</span><h4>Amber Living Room</h4></div>
-      </a>
-      <a class="gallery-item reveal" data-cat="house" href="project-detail.html?id=charcoal-facade">
+        <a class="g-detail" href="project-detail.html?id=amber-living-room">Chi tiết →</a>
+      </div>
+      <div class="gallery-item reveal" data-cat="house" data-id="charcoal-facade">
         <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?q=80&w=1000&auto=format&fit=crop" alt="Nhà phố tối giản">
         <div class="gallery-caption"><span class="g-tag">Nhà phố</span><h4>Charcoal Facade</h4></div>
-      </a>
-      <a class="gallery-item reveal" data-cat="villa" href="project-detail.html?id=golden-ridge-villa">
+        <a class="g-detail" href="project-detail.html?id=charcoal-facade">Chi tiết →</a>
+      </div>
+      <div class="gallery-item reveal" data-cat="villa" data-id="golden-ridge-villa">
         <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?q=80&w=1000&auto=format&fit=crop" alt="Biệt thự hiện đại">
         <div class="gallery-caption"><span class="g-tag">Biệt thự</span><h4>Golden Ridge Villa</h4></div>
-      </a>
-      <a class="gallery-item reveal" data-cat="interior" href="project-detail.html?id=warm-oak-kitchen">
+        <a class="g-detail" href="project-detail.html?id=golden-ridge-villa">Chi tiết →</a>
+      </div>
+      <div class="gallery-item reveal" data-cat="interior" data-id="warm-oak-kitchen">
         <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?q=80&w=1000&auto=format&fit=crop" alt="Phòng bếp hiện đại">
         <div class="gallery-caption"><span class="g-tag">Nội thất</span><h4>Warm Oak Kitchen</h4></div>
-      </a>
+        <a class="g-detail" href="project-detail.html?id=warm-oak-kitchen">Chi tiết →</a>
+      </div>
+    </div>
+
+    <!-- Lightbox xem ảnh full -->
+    <div class="lightbox" id="lightbox">
+      <span class="lightbox-counter" id="lbCounter"></span>
+      <button class="lightbox-close" id="lbClose" aria-label="Đóng">✕</button>
+      <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Ảnh trước">‹</button>
+      <img id="lbImg" src="" alt="">
+      <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Ảnh sau">›</button>
+      <div class="lightbox-caption"><span id="lbTag"></span> — <span id="lbTitle"></span></div>
     </div>
   </section>
 </main>
@@ -112,6 +130,59 @@
         it.style.display = (f === 'all' || it.dataset.cat === f) ? '' : 'none';
       });
     });
+  });
+
+  // ---- Lightbox: bấm vào ảnh (không phải nút "Chi tiết") để phóng to ----
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbTag = document.getElementById('lbTag');
+  const lbTitle = document.getElementById('lbTitle');
+  const lbCounter = document.getElementById('lbCounter');
+  let currentIndex = 0;
+
+  function visibleItems() {
+    return Array.from(items).filter(it => it.style.display !== 'none');
+  }
+
+  function openLightbox(index) {
+    const list = visibleItems();
+    currentIndex = index;
+    const it = list[currentIndex];
+    if (!it) return;
+    const img = it.querySelector('img');
+    lbImg.src = img.src.replace('w=1000', 'w=1800');
+    lbImg.alt = img.alt;
+    lbTag.textContent = it.querySelector('.g-tag').textContent;
+    lbTitle.textContent = it.querySelector('h4').textContent;
+    lbCounter.textContent = (currentIndex + 1) + ' / ' + list.length;
+    lightbox.classList.add('open');
+    document.body.classList.add('nav-locked');
+  }
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.classList.remove('nav-locked');
+  }
+  function showRelative(delta) {
+    const list = visibleItems();
+    currentIndex = (currentIndex + delta + list.length) % list.length;
+    openLightbox(currentIndex);
+  }
+
+  items.forEach((it) => {
+    it.querySelector('img').addEventListener('click', () => {
+      openLightbox(visibleItems().indexOf(it));
+    });
+  });
+
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbPrev').addEventListener('click', () => showRelative(-1));
+  document.getElementById('lbNext').addEventListener('click', () => showRelative(1));
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showRelative(-1);
+    if (e.key === 'ArrowRight') showRelative(1);
   });
 </script>
 </body>
